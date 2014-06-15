@@ -5,78 +5,108 @@
   
   <title>初始化节点工作 v0.9.2 | 开放节点计划</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="开发工作
-进展：
+  <meta name="description" content="OS: CentOS 6.X
 
-bitcoind 0.9.2
-patch: open-nodes.org_hub-v0.9.2.patch
-该补丁增加Hub模式
-合并补丁：OpenSSL在部分OS发行下ECDSA算法分支不全的问题
+Init Server
 
 
+Install bitcoin-seeder
 
 
-bitcoin-seeder
-add —quiet, fix stats output
-修复一些小错误，新增安静模式
+Install bitcoind
 
 
+Firewall
 
+cat /etc/sysconfig/iptables, seems like below:
 
-
-服务：
-
-新增比特币节点：node01.op">
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+# Firewall configuration wri">
 <meta property="og:type" content="article">
 <meta property="og:title" content="初始化节点工作 v0.9.2">
 <meta property="og:url" content="http://blog.open-nodes.org/2014/06/15/init-nodes-v092/">
 <meta property="og:site_name" content="开放节点计划">
-<meta property="og:description" content="开发工作
-进展：
+<meta property="og:description" content="OS: CentOS 6.X
 
-bitcoind 0.9.2
-patch: open-nodes.org_hub-v0.9.2.patch
-该补丁增加Hub模式
-合并补丁：OpenSSL在部分OS发行下ECDSA算法分支不全的问题
+Init Server
 
 
+Install bitcoin-seeder
 
 
-bitcoin-seeder
-add —quiet, fix stats output
-修复一些小错误，新增安静模式
+Install bitcoind
 
 
+Firewall
 
+cat /etc/sysconfig/iptables, seems like below:
 
-
-服务：
-
-新增比特币节点：node01.op">
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+# Firewall configuration wri">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初始化节点工作 v0.9.2">
-<meta name="twitter:description" content="开发工作
-进展：
+<meta name="twitter:description" content="OS: CentOS 6.X
 
-bitcoind 0.9.2
-patch: open-nodes.org_hub-v0.9.2.patch
-该补丁增加Hub模式
-合并补丁：OpenSSL在部分OS发行下ECDSA算法分支不全的问题
+Init Server
 
 
+Install bitcoin-seeder
 
 
-bitcoin-seeder
-add —quiet, fix stats output
-修复一些小错误，新增安静模式
+Install bitcoind
 
 
+Firewall
 
+cat /etc/sysconfig/iptables, seems like below:
 
-
-服务：
-
-新增比特币节点：node01.op">
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+# Firewall configuration wri">
   
     <link rel="alternative" href="/atom.xml" title="开放节点计划" type="application/atom+xml">
   
@@ -111,6 +141,8 @@ add —quiet, fix stats output
           <a class="main-nav-link" href="/">Home</a>
         
           <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/donation">Donation</a>
         
       </nav>
       <nav id="sub-nav">
@@ -148,228 +180,17 @@ add —quiet, fix stats output
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="开发工作">开发工作</h1>
-<p>进展：</p>
-<ul>
-<li>bitcoind 0.9.2<ul>
-<li>patch: <a href="https://gist.github.com/bitkevin/a1b4a556fffce6fc527a" target="_blank" rel="external">open-nodes.org_hub-v0.9.2.patch</a><ul>
-<li>该补丁增加Hub模式</li>
-<li>合并补丁：OpenSSL在部分OS发行下ECDSA算法分支不全的问题</li>
+        <ul>
+<li>OS: CentOS 6.X</li>
 </ul>
-</li>
-</ul>
-</li>
-<li>bitcoin-seeder<ul>
-<li><a href="https://github.com/open-nodes/bitcoin-seeder/commit/d6d3bfcd3ed20756d5524a1e59b1afa2206d4d21" target="_blank" rel="external">add —quiet, fix stats output</a><ul>
-<li>修复一些小错误，新增安静模式</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>服务：</p>
-<ul>
-<li>新增比特币节点：<code>node01.open-nodes.org</code></li>
-<li>新增节点种子DNS：<code>seeds.bitcoin.open-nodes.org</code></li>
-</ul>
-<h1 id="安装笔记">安装笔记</h1>
 <h2 id="Init_Server">Init Server</h2>
-<ul>
-<li>CentOS 6.X</li>
-</ul>
-<h3 id="add_repos">add repos</h3>
-<ul>
-<li>EPEL</li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>rpm -ivh http://mirror-fpt-telecom<span class="preprocessor">.fpt</span><span class="preprocessor">.net</span>/fedora/epel/<span class="number">6</span>/x86_64/epel-release-<span class="number">6</span>-<span class="number">8.</span>noarch<span class="preprocessor">.rpm</span>
-</pre></td></tr></table></figure>
-
-<ul>
-<li>Atomic</li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-</pre></td><td class="code"><pre>wget -q -O - http://www<span class="preprocessor">.atomicorp</span><span class="preprocessor">.com</span>/installers/atomic | sh
-rpm --import https://www<span class="preprocessor">.atomicorp</span><span class="preprocessor">.com</span>/RPM-GPG-KEY<span class="preprocessor">.atomicorp</span><span class="preprocessor">.txt</span>
-</pre></td></tr></table></figure>
-
-<h3 id="oh-my-zsh">oh-my-zsh</h3>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-</pre></td><td class="code"><pre>yum install <span class="attribute">-y</span> git zsh 
-wget <span class="subst">--</span>no<span class="attribute">-check</span><span class="attribute">-certificate</span> http:<span class="comment">//install.ohmyz.sh -O - | sh</span>
-</pre></td></tr></table></figure>
-
-<h3 id="prepare">prepare</h3>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-</pre></td><td class="code"><pre>yum install <span class="attribute">-y</span> bind<span class="attribute">-utils</span> denyhosts system<span class="attribute">-config</span><span class="attribute">-firewall</span><span class="attribute">-tui</span> daemontools patch
-
-yum install <span class="attribute">-y</span> make gcc gcc<span class="attribute">-c</span><span class="subst">++</span> zlib<span class="attribute">-devel</span> boost boost<span class="attribute">-devel</span> automake openssl openssl<span class="attribute">-devel</span>
-</pre></td></tr></table></figure>
-
-
+<script src="https://gist.github.com/bitkevin/2d6f2c74ec1ae9daa79e.js"></script>
 
 <h2 id="Install_bitcoin-seeder">Install bitcoin-seeder</h2>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-</pre></td><td class="code"><pre>mkdir -p ~/<span class="built_in">source</span>; <span class="built_in">cd</span> ~/<span class="built_in">source</span>
-git clone https://github.com/open-nodes/bitcoin-seeder.git
-<span class="built_in">cd</span> bitcoin-seeder
-make -j4
-</pre></td></tr></table></figure>
-
-<h3 id="supervise_for_bitcoin-seeder">supervise for bitcoin-seeder</h3>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-</pre></td><td class="code"><pre><span class="keyword">mkdir</span> ~<span class="regexp">/supervise_bitcoin_seeder
-cd ~/supervise</span>_bitcoin_seeder
-touch run
-<span class="keyword">chmod</span> +<span class="keyword">x</span> run
-</pre></td></tr></table></figure>
-
-<ul>
-<li><code>cat run</code></li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-</pre></td><td class="code"><pre><span class="shebang">#! /bin/sh
-</span>
-<span class="built_in">cd</span> ~/<span class="built_in">source</span>/bitcoin-seeder
-./dnsseed -h seeds.bitcoin.open-nodes.org -n ns01.bitcoin.open-nodes.org
-</pre></td></tr></table></figure>
-
-<ul>
-<li>start bitcoin_seeder</li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-</pre></td><td class="code"><pre><span class="built_in">cd</span> ~/
-nohup supervise supervise_bitcoin_seeder/ &
-</pre></td></tr></table></figure>
-
+<script src="https://gist.github.com/bitkevin/ec1e74c3a67073eb9056.js"></script>
 
 <h2 id="Install_bitcoind">Install bitcoind</h2>
-<h3 id="build_bitcoind">build bitcoind</h3>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-</pre></td><td class="code"><pre>mkdir <span class="attribute">-p</span> ~/source; cd ~/source
-
-wget https:<span class="comment">//github.com/bitcoin/bitcoin/archive/v0.9.2.tar.gz</span>
-tar zxvf v0<span class="number">.9</span><span class="number">.2</span>; cd bitcoin<span class="subst">-</span><span class="number">0.9</span><span class="number">.2</span>
-
-wget https:<span class="comment">//gist.githubusercontent.com/bitkevin/a1b4a556fffce6fc527a/raw/dfe6e9f42e0a0b8bf767164cb2ebafa1322be7df/open-nodes.org_hub-v0.9.2.patch</span>
-patch <span class="attribute">-p1</span> <span class="subst">&lt;</span> open<span class="attribute">-nodes</span><span class="built_in">.</span>org_hub<span class="attribute">-v0</span><span class="number">.9</span><span class="number">.2</span><span class="built_in">.</span>patch
-
-<span class="built_in">.</span>/autogen<span class="built_in">.</span>sh
-<span class="built_in">.</span>/configure <span class="subst">--</span>without<span class="attribute">-miniupnpc</span> <span class="subst">--</span>disable<span class="attribute">-wallet</span>
-make <span class="attribute">-j4</span>
-strip src/bitcoind
-cp src/bitcoind /usr/<span class="built_in">local</span>/bin/bitcoind<span class="subst">-</span><span class="number">0.9</span><span class="number">.2</span>
-cd /usr/<span class="built_in">local</span>/bin
-ln <span class="attribute">-s</span> <span class="built_in">.</span>/bitcoind<span class="subst">-</span><span class="number">0.9</span><span class="number">.2</span> bitcoind
-cd ~/source
-</pre></td></tr></table></figure>
-
-<h4 id="setup_bitcoind">setup bitcoind</h4>
-<p><code>/d1/bitcoind</code> is the home dir for bitcoind.</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-</pre></td><td class="code"><pre><span class="keyword">mkdir</span> -p /d1/bitcoind/
-<span class="keyword">chown</span> bitcoind.bitcoind /d1/bitcoind
-
-useradd bitcoind
-su - bitcoind
-</pre></td></tr></table></figure>
-
-<ul>
-<li><code>cat /d1/bitcoind/bitcoin.conf</code></li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-</pre></td><td class="code"><pre><span class="setting">rpcuser=<span class="value">bitcoinrpc</span></span>
-<span class="setting">rpcpassword=<span class="value">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</span></span>
-<span class="setting">rpcthreads=<span class="value"><span class="number">32</span></span></span>
-<span class="setting">rpcallowip=<span class="value">*</span></span>
-
-<span class="setting">datadir=<span class="value">/d1/bitcoind</span></span>
-<span class="setting">txindex=<span class="value"><span class="keyword">true</span></span></span>
-
-<span class="setting">limitdownloadblocks=<span class="value"><span class="number">720</span></span></span>
-
-<span class="setting">maxconnections=<span class="value"><span class="number">4096</span></span></span>
-<span class="setting">outboundconnections=<span class="value"><span class="number">3072</span></span></span>
-</pre></td></tr></table></figure><br><em>Don’t forget to change <strong>rpcpassword</strong></em>.<br><br>* supervise for bitcoind<br><br><figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-</pre></td><td class="code"><pre><span class="keyword">mkdir</span> ~<span class="regexp">/supervise_bitcoind
-cd ~/supervise</span>_bitcoind
-touch run
-<span class="keyword">chmod</span> +<span class="keyword">x</span> run
-</pre></td></tr></table></figure>
-
-<ul>
-<li><code>cat run</code></li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-</pre></td><td class="code"><pre><span class="shebang">#! /bin/sh
-</span>
-SROOT=$(<span class="built_in">cd</span> $(dirname <span class="string">"<span class="variable">$0</span>"</span>); <span class="built_in">pwd</span>)
-<span class="built_in">cd</span> <span class="variable">$SROOT</span>
-
-bitcoind -conf=/d1/bitcoind/bitcoin.conf
-</pre></td></tr></table></figure>
-
-<ul>
-<li>start bitcoind</li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-</pre></td><td class="code"><pre><span class="built_in">cd</span> ~/
-nohup supervise supervise_bitcoind/ &
-</pre></td></tr></table></figure>
-
+<script src="https://gist.github.com/bitkevin/f831afd413946d32e965.js"></script>
 
 <h2 id="Firewall">Firewall</h2>
 <ul>
@@ -421,7 +242,7 @@ chkconfig iptables <span class="command"><span class="keyword">on</span></span>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.open-nodes.org/2014/06/15/init-nodes-v092/" data-id="9gg9ksv84a31a57f" class="article-share-link">Share</a>
+      <a data-url="http://blog.open-nodes.org/2014/06/15/init-nodes-v092/" data-id="g998pydskyopjv8w" class="article-share-link">Share</a>
       
         <a href="http://blog.open-nodes.org/2014/06/15/init-nodes-v092/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -431,6 +252,15 @@ chkconfig iptables <span class="command"><span class="keyword">on</span></span>
   
     
 <nav id="article-nav">
+  
+    <a href="/2014/06/15/dev-bitcoin-seedermd/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Bitcoin-Seeder开发与部署
+        
+      </div>
+    </a>
   
   
     <a href="/2014/06/14/open-nodes-plan/" id="article-nav-older" class="article-nav-link-wrap">
@@ -463,7 +293,7 @@ chkconfig iptables <span class="command"><span class="keyword">on</span></span>
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06">June 2014</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06">June 2014</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -473,6 +303,14 @@ chkconfig iptables <span class="command"><span class="keyword">on</span></span>
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2014/06/15/dev-v092md/">基于bitcoind-v0.9.2开发工作</a>
+          </li>
+        
+          <li>
+            <a href="/2014/06/15/dev-bitcoin-seedermd/">Bitcoin-Seeder开发与部署</a>
+          </li>
         
           <li>
             <a href="/2014/06/15/init-nodes-v092/">初始化节点工作 v0.9.2</a>
@@ -505,6 +343,8 @@ chkconfig iptables <span class="command"><span class="keyword">on</span></span>
     <a href="/" class="mobile-nav-link">Home</a>
   
     <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/donation" class="mobile-nav-link">Donation</a>
   
 </nav>
     

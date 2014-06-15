@@ -49,6 +49,8 @@
         
           <a class="main-nav-link" href="/archives">Archives</a>
         
+          <a class="main-nav-link" href="/donation">Donation</a>
+        
       </nav>
       <nav id="sub-nav">
         
@@ -64,6 +66,185 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-dev-v092md" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/06/15/dev-v092md/" class="article-date">
+  <time datetime="2014-06-15T08:26:52.000Z" itemprop="datePublished">Jun 15 2014</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/06/15/dev-v092md/">基于bitcoind-v0.9.2开发工作</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>base on version v0.9.2</li>
+</ul>
+<h3 id="Progress">Progress</h3>
+<h4 id="patch:_open-nodes-org_hub-v0-9-2-patch">patch: <a href="https://gist.github.com/bitkevin/a1b4a556fffce6fc527a" target="_blank" rel="external">open-nodes.org_hub-v0.9.2.patch</a></h4>
+<ul>
+<li>增加Hub模式<ul>
+<li>新增 <code>-limitdownloadblocks</code>，表示可以从该节点下载多少高度以内的块，通常可以设置为2016，可显著减少带宽消耗</li>
+<li>新增 <code>-outboundconnections</code>，对外最大连接数，去掉硬编码限制（8个），通常4M对称带宽可以设置为64或128，需同时增大参数<code>-maxconnections</code></li>
+</ul>
+</li>
+<li>合并补丁：OpenSSL在部分OS发行下ECDSA算法分支不全的问题</li>
+<li>添加DNS种子</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.open-nodes.org/2014/06/15/dev-v092md/" data-id="c18cjy0tt0ztakw9" class="article-share-link">Share</a>
+      
+        <a href="http://blog.open-nodes.org/2014/06/15/dev-v092md/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-dev-bitcoin-seedermd" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/06/15/dev-bitcoin-seedermd/" class="article-date">
+  <time datetime="2014-06-15T08:25:06.000Z" itemprop="datePublished">Jun 15 2014</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/06/15/dev-bitcoin-seedermd/">Bitcoin-Seeder开发与部署</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>What is <em>bitcoin-seeder</em>？</p>
+<p>Bitcoin-seeder is a crawler for the Bitcoin network, which exposes a list of reliable nodes via a built-in DNS server.</p>
+<h3 id="Progress">Progress</h3>
+<ul>
+<li>修复一些小错误，新增安静模式<ul>
+<li><a href="https://github.com/open-nodes/bitcoin-seeder/commit/d6d3bfcd3ed20756d5524a1e59b1afa2206d4d21" target="_blank" rel="external">add —quiet, fix stats output</a></li>
+</ul>
+</li>
+<li>添加DNS种子</li>
+</ul>
+<p>需最新代码，请直接fork open-nodes的库：<a href="https://github.com/open-nodes/bitcoin-seeder" target="_blank" rel="external">https://github.com/open-nodes/bitcoin-seeder</a>。</p>
+<h3 id="DNS_Seeds节点">DNS Seeds节点</h3>
+<p>新加节点<code>seeds.bitcoin.open-nodes.org</code>，已对外提供服务：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+</pre></td><td class="code"><pre>$ dig seeds<span class="preprocessor">.bitcoin</span><span class="preprocessor">.open</span>-nodes<span class="preprocessor">.org</span> <span class="localvars">@8</span><span class="number">.8</span><span class="number">.8</span><span class="number">.8</span>
+<span class="comment">;; QUESTION SECTION:</span>
+<span class="comment">;seeds.bitcoin.open-nodes.org.	IN	A</span>
+<span class="comment">;; ANSWER SECTION:</span>
+seeds<span class="preprocessor">.bitcoin</span><span class="preprocessor">.open</span>-nodes<span class="preprocessor">.org</span>. <span class="number">59</span> <span class="keyword">IN</span>	A	<span class="number">68.192</span><span class="number">.97</span><span class="number">.155</span>
+seeds<span class="preprocessor">.bitcoin</span><span class="preprocessor">.open</span>-nodes<span class="preprocessor">.org</span>. <span class="number">59</span> <span class="keyword">IN</span>	A	<span class="number">207.229</span><span class="number">.74</span><span class="number">.8</span>
+seeds<span class="preprocessor">.bitcoin</span><span class="preprocessor">.open</span>-nodes<span class="preprocessor">.org</span>. <span class="number">59</span> <span class="keyword">IN</span>	A	<span class="number">173.13</span><span class="number">.182</span><span class="number">.10</span>
+seeds<span class="preprocessor">.bitcoin</span><span class="preprocessor">.open</span>-nodes<span class="preprocessor">.org</span>. <span class="number">59</span> <span class="keyword">IN</span>	A	<span class="number">199.91</span><span class="number">.66</span><span class="number">.218</span>
+seeds<span class="preprocessor">.bitcoin</span><span class="preprocessor">.open</span>-nodes<span class="preprocessor">.org</span>. <span class="number">59</span> <span class="keyword">IN</span>	A	<span class="number">107.170</span><span class="number">.170</span><span class="number">.56</span>
+seeds<span class="preprocessor">.bitcoin</span><span class="preprocessor">.open</span>-nodes<span class="preprocessor">.org</span>. <span class="number">59</span> <span class="keyword">IN</span>	A	<span class="number">76.27</span><span class="number">.19</span><span class="number">.151</span>
+seeds<span class="preprocessor">.bitcoin</span><span class="preprocessor">.open</span>-nodes<span class="preprocessor">.org</span>. <span class="number">59</span> <span class="keyword">IN</span>	A	<span class="number">71.184</span><span class="number">.157</span><span class="number">.228</span>
+seeds<span class="preprocessor">.bitcoin</span><span class="preprocessor">.open</span>-nodes<span class="preprocessor">.org</span>. <span class="number">59</span> <span class="keyword">IN</span>	A	<span class="number">82.7</span><span class="number">.132</span><span class="number">.159</span>
+seeds<span class="preprocessor">.bitcoin</span><span class="preprocessor">.open</span>-nodes<span class="preprocessor">.org</span>. <span class="number">59</span> <span class="keyword">IN</span>	A	<span class="number">123.202</span><span class="number">.95</span><span class="number">.155</span>
+seeds<span class="preprocessor">.bitcoin</span><span class="preprocessor">.open</span>-nodes<span class="preprocessor">.org</span>. <span class="number">59</span> <span class="keyword">IN</span>	A	<span class="number">188.226</span><span class="number">.199</span><span class="number">.191</span>
+seeds<span class="preprocessor">.bitcoin</span><span class="preprocessor">.open</span>-nodes<span class="preprocessor">.org</span>. <span class="number">59</span> <span class="keyword">IN</span>	A	<span class="number">89.155</span><span class="number">.84</span><span class="number">.38</span>
+seeds<span class="preprocessor">.bitcoin</span><span class="preprocessor">.open</span>-nodes<span class="preprocessor">.org</span>. <span class="number">59</span> <span class="keyword">IN</span>	A	<span class="number">89.178</span><span class="number">.144</span><span class="number">.93</span>
+seeds<span class="preprocessor">.bitcoin</span><span class="preprocessor">.open</span>-nodes<span class="preprocessor">.org</span>. <span class="number">59</span> <span class="keyword">IN</span>	A	<span class="number">94.21</span><span class="number">.29</span><span class="number">.112</span>
+seeds<span class="preprocessor">.bitcoin</span><span class="preprocessor">.open</span>-nodes<span class="preprocessor">.org</span>. <span class="number">59</span> <span class="keyword">IN</span>	A	<span class="number">50.23</span><span class="number">.69</span><span class="number">.147</span>
+seeds<span class="preprocessor">.bitcoin</span><span class="preprocessor">.open</span>-nodes<span class="preprocessor">.org</span>. <span class="number">59</span> <span class="keyword">IN</span>	A	<span class="number">85.214</span><span class="number">.90</span><span class="number">.1</span>
+seeds<span class="preprocessor">.bitcoin</span><span class="preprocessor">.open</span>-nodes<span class="preprocessor">.org</span>. <span class="number">59</span> <span class="keyword">IN</span>	A	<span class="number">195.154</span><span class="number">.106</span><span class="number">.147</span>
+seeds<span class="preprocessor">.bitcoin</span><span class="preprocessor">.open</span>-nodes<span class="preprocessor">.org</span>. <span class="number">59</span> <span class="keyword">IN</span>	A	<span class="number">188.40</span><span class="number">.130</span><span class="number">.146</span>
+seeds<span class="preprocessor">.bitcoin</span><span class="preprocessor">.open</span>-nodes<span class="preprocessor">.org</span>. <span class="number">59</span> <span class="keyword">IN</span>	A	<span class="number">24.146</span><span class="number">.176</span><span class="number">.168</span>
+seeds<span class="preprocessor">.bitcoin</span><span class="preprocessor">.open</span>-nodes<span class="preprocessor">.org</span>. <span class="number">59</span> <span class="keyword">IN</span>	A	<span class="number">80.229</span><span class="number">.152</span><span class="number">.39</span>
+seeds<span class="preprocessor">.bitcoin</span><span class="preprocessor">.open</span>-nodes<span class="preprocessor">.org</span>. <span class="number">59</span> <span class="keyword">IN</span>	A	<span class="number">96.246</span><span class="number">.183</span><span class="number">.224</span>
+seeds<span class="preprocessor">.bitcoin</span><span class="preprocessor">.open</span>-nodes<span class="preprocessor">.org</span>. <span class="number">59</span> <span class="keyword">IN</span>	A	<span class="number">119.186</span><span class="number">.235</span><span class="number">.61</span>
+seeds<span class="preprocessor">.bitcoin</span><span class="preprocessor">.open</span>-nodes<span class="preprocessor">.org</span>. <span class="number">59</span> <span class="keyword">IN</span>	A	<span class="number">108.180</span><span class="number">.208</span><span class="number">.106</span>
+seeds<span class="preprocessor">.bitcoin</span><span class="preprocessor">.open</span>-nodes<span class="preprocessor">.org</span>. <span class="number">59</span> <span class="keyword">IN</span>	A	<span class="number">92.113</span><span class="number">.73</span><span class="number">.202</span>
+seeds<span class="preprocessor">.bitcoin</span><span class="preprocessor">.open</span>-nodes<span class="preprocessor">.org</span>. <span class="number">59</span> <span class="keyword">IN</span>	A	<span class="number">79.112</span><span class="number">.106</span><span class="number">.192</span>
+seeds<span class="preprocessor">.bitcoin</span><span class="preprocessor">.open</span>-nodes<span class="preprocessor">.org</span>. <span class="number">59</span> <span class="keyword">IN</span>	A	<span class="number">23.226</span><span class="number">.177</span><span class="number">.19</span>
+seeds<span class="preprocessor">.bitcoin</span><span class="preprocessor">.open</span>-nodes<span class="preprocessor">.org</span>. <span class="number">59</span> <span class="keyword">IN</span>	A	<span class="number">96.49</span><span class="number">.96</span><span class="number">.90</span>
+
+
+
+$ dig -t ns seeds<span class="preprocessor">.bitcoin</span><span class="preprocessor">.open</span>-nodes<span class="preprocessor">.org</span> <span class="localvars">@8</span><span class="number">.8</span><span class="number">.8</span><span class="number">.8</span>
+<span class="comment">;; QUESTION SECTION:</span>
+<span class="comment">;seeds.bitcoin.open-nodes.org.	IN	NS</span>
+<span class="comment">;; ANSWER SECTION:</span>
+seeds<span class="preprocessor">.bitcoin</span><span class="preprocessor">.open</span>-nodes<span class="preprocessor">.org</span>. <span class="number">7996</span> <span class="keyword">IN</span>	NS	ns01<span class="preprocessor">.bitcoin</span><span class="preprocessor">.open</span>-nodes<span class="preprocessor">.org</span>.
+</pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.open-nodes.org/2014/06/15/dev-bitcoin-seedermd/" data-id="cpp67aq7apo8180d" class="article-share-link">Share</a>
+      
+        <a href="http://blog.open-nodes.org/2014/06/15/dev-bitcoin-seedermd/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-init-nodes-v092" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -87,228 +268,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="开发工作">开发工作</h1>
-<p>进展：</p>
-<ul>
-<li>bitcoind 0.9.2<ul>
-<li>patch: <a href="https://gist.github.com/bitkevin/a1b4a556fffce6fc527a" target="_blank" rel="external">open-nodes.org_hub-v0.9.2.patch</a><ul>
-<li>该补丁增加Hub模式</li>
-<li>合并补丁：OpenSSL在部分OS发行下ECDSA算法分支不全的问题</li>
+        <ul>
+<li>OS: CentOS 6.X</li>
 </ul>
-</li>
-</ul>
-</li>
-<li>bitcoin-seeder<ul>
-<li><a href="https://github.com/open-nodes/bitcoin-seeder/commit/d6d3bfcd3ed20756d5524a1e59b1afa2206d4d21" target="_blank" rel="external">add —quiet, fix stats output</a><ul>
-<li>修复一些小错误，新增安静模式</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>服务：</p>
-<ul>
-<li>新增比特币节点：<code>node01.open-nodes.org</code></li>
-<li>新增节点种子DNS：<code>seeds.bitcoin.open-nodes.org</code></li>
-</ul>
-<h1 id="安装笔记">安装笔记</h1>
 <h2 id="Init_Server">Init Server</h2>
-<ul>
-<li>CentOS 6.X</li>
-</ul>
-<h3 id="add_repos">add repos</h3>
-<ul>
-<li>EPEL</li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>rpm -ivh http://mirror-fpt-telecom<span class="preprocessor">.fpt</span><span class="preprocessor">.net</span>/fedora/epel/<span class="number">6</span>/x86_64/epel-release-<span class="number">6</span>-<span class="number">8.</span>noarch<span class="preprocessor">.rpm</span>
-</pre></td></tr></table></figure>
-
-<ul>
-<li>Atomic</li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-</pre></td><td class="code"><pre>wget -q -O - http://www<span class="preprocessor">.atomicorp</span><span class="preprocessor">.com</span>/installers/atomic | sh
-rpm --import https://www<span class="preprocessor">.atomicorp</span><span class="preprocessor">.com</span>/RPM-GPG-KEY<span class="preprocessor">.atomicorp</span><span class="preprocessor">.txt</span>
-</pre></td></tr></table></figure>
-
-<h3 id="oh-my-zsh">oh-my-zsh</h3>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-</pre></td><td class="code"><pre>yum install <span class="attribute">-y</span> git zsh 
-wget <span class="subst">--</span>no<span class="attribute">-check</span><span class="attribute">-certificate</span> http:<span class="comment">//install.ohmyz.sh -O - | sh</span>
-</pre></td></tr></table></figure>
-
-<h3 id="prepare">prepare</h3>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-</pre></td><td class="code"><pre>yum install <span class="attribute">-y</span> bind<span class="attribute">-utils</span> denyhosts system<span class="attribute">-config</span><span class="attribute">-firewall</span><span class="attribute">-tui</span> daemontools patch
-
-yum install <span class="attribute">-y</span> make gcc gcc<span class="attribute">-c</span><span class="subst">++</span> zlib<span class="attribute">-devel</span> boost boost<span class="attribute">-devel</span> automake openssl openssl<span class="attribute">-devel</span>
-</pre></td></tr></table></figure>
-
-
+<script src="https://gist.github.com/bitkevin/2d6f2c74ec1ae9daa79e.js"></script>
 
 <h2 id="Install_bitcoin-seeder">Install bitcoin-seeder</h2>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-</pre></td><td class="code"><pre>mkdir -p ~/<span class="built_in">source</span>; <span class="built_in">cd</span> ~/<span class="built_in">source</span>
-git clone https://github.com/open-nodes/bitcoin-seeder.git
-<span class="built_in">cd</span> bitcoin-seeder
-make -j4
-</pre></td></tr></table></figure>
-
-<h3 id="supervise_for_bitcoin-seeder">supervise for bitcoin-seeder</h3>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-</pre></td><td class="code"><pre><span class="keyword">mkdir</span> ~<span class="regexp">/supervise_bitcoin_seeder
-cd ~/supervise</span>_bitcoin_seeder
-touch run
-<span class="keyword">chmod</span> +<span class="keyword">x</span> run
-</pre></td></tr></table></figure>
-
-<ul>
-<li><code>cat run</code></li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-</pre></td><td class="code"><pre><span class="shebang">#! /bin/sh
-</span>
-<span class="built_in">cd</span> ~/<span class="built_in">source</span>/bitcoin-seeder
-./dnsseed -h seeds.bitcoin.open-nodes.org -n ns01.bitcoin.open-nodes.org
-</pre></td></tr></table></figure>
-
-<ul>
-<li>start bitcoin_seeder</li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-</pre></td><td class="code"><pre><span class="built_in">cd</span> ~/
-nohup supervise supervise_bitcoin_seeder/ &
-</pre></td></tr></table></figure>
-
+<script src="https://gist.github.com/bitkevin/ec1e74c3a67073eb9056.js"></script>
 
 <h2 id="Install_bitcoind">Install bitcoind</h2>
-<h3 id="build_bitcoind">build bitcoind</h3>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-</pre></td><td class="code"><pre>mkdir <span class="attribute">-p</span> ~/source; cd ~/source
-
-wget https:<span class="comment">//github.com/bitcoin/bitcoin/archive/v0.9.2.tar.gz</span>
-tar zxvf v0<span class="number">.9</span><span class="number">.2</span>; cd bitcoin<span class="subst">-</span><span class="number">0.9</span><span class="number">.2</span>
-
-wget https:<span class="comment">//gist.githubusercontent.com/bitkevin/a1b4a556fffce6fc527a/raw/dfe6e9f42e0a0b8bf767164cb2ebafa1322be7df/open-nodes.org_hub-v0.9.2.patch</span>
-patch <span class="attribute">-p1</span> <span class="subst">&lt;</span> open<span class="attribute">-nodes</span><span class="built_in">.</span>org_hub<span class="attribute">-v0</span><span class="number">.9</span><span class="number">.2</span><span class="built_in">.</span>patch
-
-<span class="built_in">.</span>/autogen<span class="built_in">.</span>sh
-<span class="built_in">.</span>/configure <span class="subst">--</span>without<span class="attribute">-miniupnpc</span> <span class="subst">--</span>disable<span class="attribute">-wallet</span>
-make <span class="attribute">-j4</span>
-strip src/bitcoind
-cp src/bitcoind /usr/<span class="built_in">local</span>/bin/bitcoind<span class="subst">-</span><span class="number">0.9</span><span class="number">.2</span>
-cd /usr/<span class="built_in">local</span>/bin
-ln <span class="attribute">-s</span> <span class="built_in">.</span>/bitcoind<span class="subst">-</span><span class="number">0.9</span><span class="number">.2</span> bitcoind
-cd ~/source
-</pre></td></tr></table></figure>
-
-<h4 id="setup_bitcoind">setup bitcoind</h4>
-<p><code>/d1/bitcoind</code> is the home dir for bitcoind.</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-</pre></td><td class="code"><pre><span class="keyword">mkdir</span> -p /d1/bitcoind/
-<span class="keyword">chown</span> bitcoind.bitcoind /d1/bitcoind
-
-useradd bitcoind
-su - bitcoind
-</pre></td></tr></table></figure>
-
-<ul>
-<li><code>cat /d1/bitcoind/bitcoin.conf</code></li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-</pre></td><td class="code"><pre><span class="setting">rpcuser=<span class="value">bitcoinrpc</span></span>
-<span class="setting">rpcpassword=<span class="value">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</span></span>
-<span class="setting">rpcthreads=<span class="value"><span class="number">32</span></span></span>
-<span class="setting">rpcallowip=<span class="value">*</span></span>
-
-<span class="setting">datadir=<span class="value">/d1/bitcoind</span></span>
-<span class="setting">txindex=<span class="value"><span class="keyword">true</span></span></span>
-
-<span class="setting">limitdownloadblocks=<span class="value"><span class="number">720</span></span></span>
-
-<span class="setting">maxconnections=<span class="value"><span class="number">4096</span></span></span>
-<span class="setting">outboundconnections=<span class="value"><span class="number">3072</span></span></span>
-</pre></td></tr></table></figure><br><em>Don’t forget to change <strong>rpcpassword</strong></em>.<br><br>* supervise for bitcoind<br><br><figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-</pre></td><td class="code"><pre><span class="keyword">mkdir</span> ~<span class="regexp">/supervise_bitcoind
-cd ~/supervise</span>_bitcoind
-touch run
-<span class="keyword">chmod</span> +<span class="keyword">x</span> run
-</pre></td></tr></table></figure>
-
-<ul>
-<li><code>cat run</code></li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-</pre></td><td class="code"><pre><span class="shebang">#! /bin/sh
-</span>
-SROOT=$(<span class="built_in">cd</span> $(dirname <span class="string">"<span class="variable">$0</span>"</span>); <span class="built_in">pwd</span>)
-<span class="built_in">cd</span> <span class="variable">$SROOT</span>
-
-bitcoind -conf=/d1/bitcoind/bitcoin.conf
-</pre></td></tr></table></figure>
-
-<ul>
-<li>start bitcoind</li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-</pre></td><td class="code"><pre><span class="built_in">cd</span> ~/
-nohup supervise supervise_bitcoind/ &
-</pre></td></tr></table></figure>
-
+<script src="https://gist.github.com/bitkevin/f831afd413946d32e965.js"></script>
 
 <h2 id="Firewall">Firewall</h2>
 <ul>
@@ -360,7 +330,7 @@ chkconfig iptables <span class="command"><span class="keyword">on</span></span>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.open-nodes.org/2014/06/15/init-nodes-v092/" data-id="9gg9ksv84a31a57f" class="article-share-link">Share</a>
+      <a data-url="http://blog.open-nodes.org/2014/06/15/init-nodes-v092/" data-id="g998pydskyopjv8w" class="article-share-link">Share</a>
       
         <a href="http://blog.open-nodes.org/2014/06/15/init-nodes-v092/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -470,7 +440,7 @@ donation.<span class="keyword">open</span>-nodes.org. <span class="number">564</
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.open-nodes.org/2014/06/14/open-nodes-plan/" data-id="to2x7ksp3onhnkd6" class="article-share-link">Share</a>
+      <a data-url="http://blog.open-nodes.org/2014/06/14/open-nodes-plan/" data-id="4ab9jftjti95jp0p" class="article-share-link">Share</a>
       
         <a href="http://blog.open-nodes.org/2014/06/14/open-nodes-plan/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -497,7 +467,7 @@ donation.<span class="keyword">open</span>-nodes.org. <span class="number">564</
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06">June 2014</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06">June 2014</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -507,6 +477,14 @@ donation.<span class="keyword">open</span>-nodes.org. <span class="number">564</
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2014/06/15/dev-v092md/">基于bitcoind-v0.9.2开发工作</a>
+          </li>
+        
+          <li>
+            <a href="/2014/06/15/dev-bitcoin-seedermd/">Bitcoin-Seeder开发与部署</a>
+          </li>
         
           <li>
             <a href="/2014/06/15/init-nodes-v092/">初始化节点工作 v0.9.2</a>
@@ -539,6 +517,8 @@ donation.<span class="keyword">open</span>-nodes.org. <span class="number">564</
     <a href="/" class="mobile-nav-link">Home</a>
   
     <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/donation" class="mobile-nav-link">Donation</a>
   
 </nav>
     
