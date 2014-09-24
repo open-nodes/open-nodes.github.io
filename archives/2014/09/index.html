@@ -3,38 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>基于bitcoind-v0.9.2开发工作 | 开放节点计划</title>
+  <title>Archives: 2014/9 | 开放节点计划</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="base on version v0.9.2
-
-Progress
-patch: open-nodes.org_hub-v0.9.2.patch
-
-增加Hub模式
-新增 -limitdownloadblocks，表示可以从该节点下载多少高度以内的块，通常可以设置为2016，可显著减少带宽消耗
-新增 -outboundconnections，对外最大连接数，去掉硬编码限制（8个），通常4M对称带宽可">
-<meta property="og:type" content="article">
-<meta property="og:title" content="基于bitcoind-v0.9.2开发工作">
-<meta property="og:url" content="http://blog.open-nodes.org/2014/06/15/dev-v092md/">
+  <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="开放节点计划">
+<meta property="og:url" content="http://blog.open-nodes.org/archives/2014/09/">
 <meta property="og:site_name" content="开放节点计划">
-<meta property="og:description" content="base on version v0.9.2
-
-Progress
-patch: open-nodes.org_hub-v0.9.2.patch
-
-增加Hub模式
-新增 -limitdownloadblocks，表示可以从该节点下载多少高度以内的块，通常可以设置为2016，可显著减少带宽消耗
-新增 -outboundconnections，对外最大连接数，去掉硬编码限制（8个），通常4M对称带宽可">
+<meta property="og:description">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="基于bitcoind-v0.9.2开发工作">
-<meta name="twitter:description" content="base on version v0.9.2
-
-Progress
-patch: open-nodes.org_hub-v0.9.2.patch
-
-增加Hub模式
-新增 -limitdownloadblocks，表示可以从该节点下载多少高度以内的块，通常可以设置为2016，可显著减少带宽消耗
-新增 -outboundconnections，对外最大连接数，去掉硬编码限制（8个），通常4M对称带宽可">
+<meta name="twitter:title" content="开放节点计划">
+<meta name="twitter:description">
   
     <link rel="alternative" href="/atom.xml" title="开放节点计划" type="application/atom+xml">
   
@@ -86,10 +65,12 @@ patch: open-nodes.org_hub-v0.9.2.patch
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-dev-v092md" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main">
+  
+    <article id="post-bitcoind-0921-ubuntu-1404-LTS" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/06/15/dev-v092md/" class="article-date">
-  <time datetime="2014-06-15T08:26:52.000Z" itemprop="datePublished">Jun 15 2014</time>
+    <a href="/2014/09/24/bitcoind-0921-ubuntu-1404-LTS/" class="article-date">
+  <time datetime="2014-09-24T03:20:08.000Z" itemprop="datePublished">Sep 24 2014</time>
 </a>
     
   </div>
@@ -99,8 +80,8 @@ patch: open-nodes.org_hub-v0.9.2.patch
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      基于bitcoind-v0.9.2开发工作
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/09/24/bitcoind-0921-ubuntu-1404-LTS/">超级节点部署文档-bitcoind-v0.9.2.1-ubuntu_14.04_LTS</a>
     </h1>
   
 
@@ -108,61 +89,46 @@ patch: open-nodes.org_hub-v0.9.2.patch
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>base on version v0.9.2</li>
-</ul>
-<h3 id="Progress">Progress</h3>
-<h4 id="patch:_open-nodes-org_hub-v0-9-2-patch">patch: <a href="https://gist.github.com/bitkevin/a1b4a556fffce6fc527a" target="_blank" rel="external">open-nodes.org_hub-v0.9.2.patch</a></h4>
+        <h3 id="软件需求">软件需求</h3>
 <ul>
-<li>增加Hub模式<ul>
-<li>新增 <code>-limitdownloadblocks</code>，表示可以从该节点下载多少高度以内的块，通常可以设置为2016，可显著减少带宽消耗</li>
-<li>新增 <code>-outboundconnections</code>，对外最大连接数，去掉硬编码限制（8个），通常4M对称带宽可以设置为64或128，需同时增大参数<code>-maxconnections</code></li>
+<li>OS: Ubuntu 14.04 LTS</li>
+<li>Bitcoind: v0.9.2.1</li>
+</ul>
+<h3 id="事前必读">事前必读</h3>
+<ul>
+<li><strong>bitcoin</strong>安装目录为: <code>/root/.bitcoin</code></li>
+<li>root身份执行本安装过程，若非root，请注意<code>sodo</code>切换</li>
+<li><code>supervise</code>模式运行bitcoind</li>
+<li>若是全新ubuntu 14.04 LTS，可以直接运行下面的安装shell<ul>
+<li><code>wget --no-check-certificate https://raw.githubusercontent.com/open-nodes/InstallStaff/master/scripts/v0.9.2.1/ubuntu-14.04-LTS-bitcoind-0.9.2.1.sh -O - | sh</code></li>
+<li>若已有部分服务，请根据需要选择执行</li>
 </ul>
 </li>
-<li>合并补丁：OpenSSL在部分OS发行下ECDSA算法分支不全的问题</li>
-<li>添加DNS种子</li>
+<li>跳高句柄限制数后，需要退出登录并再次登入</li>
 </ul>
+<h3 id="安装文档&amp;命令">安装文档&amp;命令</h3>
+<p><a href="https://github.com/open-nodes/InstallStaff/blob/master/scripts/v0.9.2.1/ubuntu-14.04-LTS-bitcoind-0.9.2.1.sh" target="_blank" rel="external">https://github.com/open-nodes/InstallStaff/blob/master/scripts/v0.9.2.1/ubuntu-14.04-LTS-bitcoind-0.9.2.1.sh</a></p>
+<p>完成上述过程后，退出并重新登录。执行命令：<code>nohup supervise /root/supervise_bitcoind/ &amp;</code>，以启动bitcoind。</p>
+<p>首次同步若很慢，可能需要重启bitcoind，命令: <strong>kill `pgrep bitcoind`</strong></p>
+<h3 id="其他">其他</h3>
+<p>如果任何问题，请提出issue：<a href="https://github.com/open-nodes/InstallStaff/issues" target="_blank" rel="external">https://github.com/open-nodes/InstallStaff/issues</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.open-nodes.org/2014/06/15/dev-v092md/" data-id="pmcraloqv0lsvrx6" class="article-share-link">Share</a>
+      <a data-url="http://blog.open-nodes.org/2014/09/24/bitcoind-0921-ubuntu-1404-LTS/" data-id="28vq9araozytrpal" class="article-share-link">Share</a>
       
-        <a href="http://blog.open-nodes.org/2014/06/15/dev-v092md/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://blog.open-nodes.org/2014/09/24/bitcoind-0921-ubuntu-1404-LTS/#disqus_thread" class="article-comment-link">Comments</a>
       
       
     </footer>
   </div>
   
-    
-<nav id="article-nav">
-  
-    <a href="/2014/09/24/bitcoind-0921-ubuntu-1404-LTS/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          超级节点部署文档-bitcoind-v0.9.2.1-ubuntu_14.04_LTS
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2014/06/15/dev-bitcoin-seedermd/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Bitcoin-Seeder开发与部署</div>
-    </a>
-  
-</nav>
-
-  
 </article>
 
 
-<section id="comments">
-  <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  </div>
-</section>
+  
+  
 </section>
         
           <aside id="sidebar">
@@ -239,13 +205,11 @@ patch: open-nodes.org_hub-v0.9.2.patch
 <script>
   var disqus_shortname = 'opennodes';
   
-  var disqus_url = 'http://blog.open-nodes.org/2014/06/15/dev-v092md/';
-  
   (function(){
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//go.disqus.com/embed.js';
+    dsq.src = '//go.disqus.com/count.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
 </script>

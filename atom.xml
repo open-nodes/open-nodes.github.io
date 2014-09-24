@@ -4,7 +4,7 @@
   <subtitle><![CDATA[open-nodes.org]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.open-nodes.org/"/>
-  <updated>2014-06-15T09:39:28.112Z</updated>
+  <updated>2014-09-24T04:10:48.725Z</updated>
   <id>http://blog.open-nodes.org/</id>
   
   <author>
@@ -15,11 +15,45 @@
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[超级节点部署文档-bitcoind-v0.9.2.1-ubuntu_14.04_LTS]]></title>
+    <link href="http://blog.open-nodes.org/2014/09/24/bitcoind-0921-ubuntu-1404-LTS/"/>
+    <id>http://blog.open-nodes.org/2014/09/24/bitcoind-0921-ubuntu-1404-LTS/</id>
+    <published>2014-09-24T03:20:08.000Z</published>
+    <updated>2014-09-24T04:10:29.000Z</updated>
+    <content type="html"><![CDATA[<h3 id="软件需求">软件需求</h3>
+<ul>
+<li>OS: Ubuntu 14.04 LTS</li>
+<li>Bitcoind: v0.9.2.1</li>
+</ul>
+<h3 id="事前必读">事前必读</h3>
+<ul>
+<li><strong>bitcoin</strong>安装目录为: <code>/root/.bitcoin</code></li>
+<li>root身份执行本安装过程，若非root，请注意<code>sodo</code>切换</li>
+<li><code>supervise</code>模式运行bitcoind</li>
+<li>若是全新ubuntu 14.04 LTS，可以直接运行下面的安装shell<ul>
+<li><code>wget --no-check-certificate https://raw.githubusercontent.com/open-nodes/InstallStaff/master/scripts/v0.9.2.1/ubuntu-14.04-LTS-bitcoind-0.9.2.1.sh -O - | sh</code></li>
+<li>若已有部分服务，请根据需要选择执行</li>
+</ul>
+</li>
+<li>跳高句柄限制数后，需要退出登录并再次登入</li>
+</ul>
+<h3 id="安装文档&amp;命令">安装文档&amp;命令</h3>
+<p><a href="https://github.com/open-nodes/InstallStaff/blob/master/scripts/v0.9.2.1/ubuntu-14.04-LTS-bitcoind-0.9.2.1.sh" target="_blank" rel="external">https://github.com/open-nodes/InstallStaff/blob/master/scripts/v0.9.2.1/ubuntu-14.04-LTS-bitcoind-0.9.2.1.sh</a></p>
+<p>完成上述过程后，退出并重新登录。执行命令：<code>nohup supervise /root/supervise_bitcoind/ &amp;</code>，以启动bitcoind。</p>
+<p>首次同步若很慢，可能需要重启bitcoind，命令: <strong>kill `pgrep bitcoind`</strong></p>
+<h3 id="其他">其他</h3>
+<p>如果任何问题，请提出issue：<a href="https://github.com/open-nodes/InstallStaff/issues" target="_blank" rel="external">https://github.com/open-nodes/InstallStaff/issues</a></p>
+]]></content>
+    
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[基于bitcoind-v0.9.2开发工作]]></title>
     <link href="http://blog.open-nodes.org/2014/06/15/dev-v092md/"/>
     <id>http://blog.open-nodes.org/2014/06/15/dev-v092md/</id>
     <published>2014-06-15T08:26:52.000Z</published>
-    <updated>2014-06-15T08:47:40.000Z</updated>
+    <updated>2014-09-24T03:18:10.000Z</updated>
     <content type="html"><![CDATA[<ul>
 <li>base on version v0.9.2</li>
 </ul>
@@ -44,7 +78,7 @@
     <link href="http://blog.open-nodes.org/2014/06/15/dev-bitcoin-seedermd/"/>
     <id>http://blog.open-nodes.org/2014/06/15/dev-bitcoin-seedermd/</id>
     <published>2014-06-15T08:25:06.000Z</published>
-    <updated>2014-06-15T08:51:42.000Z</updated>
+    <updated>2014-09-24T03:18:10.000Z</updated>
     <content type="html"><![CDATA[<p>What is <em>bitcoin-seeder</em>？</p>
 <p>Bitcoin-seeder is a crawler for the Bitcoin network, which exposes a list of reliable nodes via a built-in DNS server.</p>
 <h3 id="Progress">Progress</h3>
@@ -144,7 +178,7 @@ seeds<span class="preprocessor">.bitcoin</span><span class="preprocessor">.open<
     <link href="http://blog.open-nodes.org/2014/06/15/init-nodes-v092/"/>
     <id>http://blog.open-nodes.org/2014/06/15/init-nodes-v092/</id>
     <published>2014-06-14T17:47:42.000Z</published>
-    <updated>2014-06-15T08:31:22.000Z</updated>
+    <updated>2014-09-24T03:18:10.000Z</updated>
     <content type="html"><![CDATA[<ul>
 <li>OS: CentOS 6.X</li>
 </ul>

@@ -3,110 +3,50 @@
 <head>
   <meta charset="utf-8">
   
-  <title>初始化节点工作 v0.9.2 | 开放节点计划</title>
+  <title>超级节点部署文档-bitcoind-v0.9.2.1-ubuntu_14.04_LTS | 开放节点计划</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="OS: CentOS 6.X
+  <meta name="description" content="软件需求
 
-Init Server
+OS: Ubuntu 14.04 LTS
+Bitcoind: v0.9.2.1
 
+事前必读
 
-Install bitcoin-seeder
-
-
-Install bitcoind
-
-
-Firewall
-
-cat /etc/sysconfig/iptables, seems like below:
-
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-# Firewall configuration wri">
+bitcoin安装目录为: /root/.bitcoin
+root身份执行本安装过程，若非root，请注意sodo切换
+supervise模式运行bitcoind
+若是全新ubuntu 14.04 LTS，可以直接运行下面的安装shell
+wget --no-check-certificate">
 <meta property="og:type" content="article">
-<meta property="og:title" content="初始化节点工作 v0.9.2">
-<meta property="og:url" content="http://blog.open-nodes.org/2014/06/15/init-nodes-v092/">
+<meta property="og:title" content="超级节点部署文档-bitcoind-v0.9.2.1-ubuntu_14.04_LTS">
+<meta property="og:url" content="http://blog.open-nodes.org/2014/09/24/bitcoind-0921-ubuntu-1404-LTS/">
 <meta property="og:site_name" content="开放节点计划">
-<meta property="og:description" content="OS: CentOS 6.X
+<meta property="og:description" content="软件需求
 
-Init Server
+OS: Ubuntu 14.04 LTS
+Bitcoind: v0.9.2.1
 
+事前必读
 
-Install bitcoin-seeder
-
-
-Install bitcoind
-
-
-Firewall
-
-cat /etc/sysconfig/iptables, seems like below:
-
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-# Firewall configuration wri">
+bitcoin安装目录为: /root/.bitcoin
+root身份执行本安装过程，若非root，请注意sodo切换
+supervise模式运行bitcoind
+若是全新ubuntu 14.04 LTS，可以直接运行下面的安装shell
+wget --no-check-certificate">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="初始化节点工作 v0.9.2">
-<meta name="twitter:description" content="OS: CentOS 6.X
+<meta name="twitter:title" content="超级节点部署文档-bitcoind-v0.9.2.1-ubuntu_14.04_LTS">
+<meta name="twitter:description" content="软件需求
 
-Init Server
+OS: Ubuntu 14.04 LTS
+Bitcoind: v0.9.2.1
 
+事前必读
 
-Install bitcoin-seeder
-
-
-Install bitcoind
-
-
-Firewall
-
-cat /etc/sysconfig/iptables, seems like below:
-
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-# Firewall configuration wri">
+bitcoin安装目录为: /root/.bitcoin
+root身份执行本安装过程，若非root，请注意sodo切换
+supervise模式运行bitcoind
+若是全新ubuntu 14.04 LTS，可以直接运行下面的安装shell
+wget --no-check-certificate">
   
     <link rel="alternative" href="/atom.xml" title="开放节点计划" type="application/atom+xml">
   
@@ -158,10 +98,10 @@ cat /etc/sysconfig/iptables, seems like below:
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-init-nodes-v092" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-bitcoind-0921-ubuntu-1404-LTS" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/06/15/init-nodes-v092/" class="article-date">
-  <time datetime="2014-06-14T17:47:42.000Z" itemprop="datePublished">Jun 15 2014</time>
+    <a href="/2014/09/24/bitcoind-0921-ubuntu-1404-LTS/" class="article-date">
+  <time datetime="2014-09-24T03:20:08.000Z" itemprop="datePublished">Sep 24 2014</time>
 </a>
     
   </div>
@@ -172,7 +112,7 @@ cat /etc/sysconfig/iptables, seems like below:
         
   
     <h1 class="article-title" itemprop="name">
-      初始化节点工作 v0.9.2
+      超级节点部署文档-bitcoind-v0.9.2.1-ubuntu_14.04_LTS
     </h1>
   
 
@@ -180,71 +120,36 @@ cat /etc/sysconfig/iptables, seems like below:
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>OS: CentOS 6.X</li>
-</ul>
-<h2 id="Init_Server">Init Server</h2>
-<script src="https://gist.github.com/bitkevin/2d6f2c74ec1ae9daa79e.js"></script>
-
-<h2 id="Install_bitcoin-seeder">Install bitcoin-seeder</h2>
-<script src="https://gist.github.com/bitkevin/ec1e74c3a67073eb9056.js"></script>
-
-<h2 id="Install_bitcoind">Install bitcoind</h2>
-<script src="https://gist.github.com/bitkevin/f831afd413946d32e965.js"></script>
-
-<h2 id="Firewall">Firewall</h2>
+        <h3 id="软件需求">软件需求</h3>
 <ul>
-<li><code>cat /etc/sysconfig/iptables</code>, seems like below:</li>
+<li>OS: Ubuntu 14.04 LTS</li>
+<li>Bitcoind: v0.9.2.1</li>
 </ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-</pre></td><td class="code"><pre># Firewall configuration written by system-config-firewall
-# Manual customization of this file is not recommended.
-*filter
-:INPUT ACCEPT [0:0]
-:FORWARD ACCEPT [0:0]
-:OUTPUT ACCEPT [0:0]
--<span class="ruby"><span class="constant">A</span> <span class="constant">INPUT</span> -m state --state <span class="constant">ESTABLISHED</span>,<span class="constant">RELATED</span> -j <span class="constant">ACCEPT</span>
-</span>-<span class="ruby"><span class="constant">A</span> <span class="constant">INPUT</span> -p icmp -j <span class="constant">ACCEPT</span>
-</span>-<span class="ruby"><span class="constant">A</span> <span class="constant">INPUT</span> -i lo -j <span class="constant">ACCEPT</span>
-</span>-<span class="ruby"><span class="constant">A</span> <span class="constant">INPUT</span> -m state --state <span class="constant">NEW</span> -m tcp -p tcp --dport <span class="number">22</span> -j <span class="constant">ACCEPT</span>
-</span>-<span class="ruby"><span class="constant">A</span> <span class="constant">INPUT</span> -m state --state <span class="constant">NEW</span> -m udp -p udp --dport <span class="number">53</span> -j <span class="constant">ACCEPT</span>
-</span>-<span class="ruby"><span class="constant">A</span> <span class="constant">INPUT</span> -m state --state <span class="constant">NEW</span> -m tcp -p tcp --dport <span class="number">8332</span> -j <span class="constant">ACCEPT</span>
-</span>-<span class="ruby"><span class="constant">A</span> <span class="constant">INPUT</span> -m state --state <span class="constant">NEW</span> -m tcp -p tcp --dport <span class="number">8333</span> -j <span class="constant">ACCEPT</span>
-</span>-<span class="ruby"><span class="constant">A</span> <span class="constant">INPUT</span> -j <span class="constant">REJECT</span> --reject-with icmp-host-prohibited
-</span>-<span class="ruby"><span class="constant">A</span> <span class="constant">FORWARD</span> -j <span class="constant">REJECT</span> --reject-with icmp-host-prohibited
-</span>COMMIT
-</pre></td></tr></table></figure>
-
-<p>restart iptables</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-</pre></td><td class="code"><pre>/etc/init.d/iptables restart
-chkconfig iptables <span class="command"><span class="keyword">on</span></span>
-</pre></td></tr></table></figure>
-
-<p>Ipv6’s settings is the same as ipv4.</p>
+<h3 id="事前必读">事前必读</h3>
+<ul>
+<li><strong>bitcoin</strong>安装目录为: <code>/root/.bitcoin</code></li>
+<li>root身份执行本安装过程，若非root，请注意<code>sodo</code>切换</li>
+<li><code>supervise</code>模式运行bitcoind</li>
+<li>若是全新ubuntu 14.04 LTS，可以直接运行下面的安装shell<ul>
+<li><code>wget --no-check-certificate https://raw.githubusercontent.com/open-nodes/InstallStaff/master/scripts/v0.9.2.1/ubuntu-14.04-LTS-bitcoind-0.9.2.1.sh -O - | sh</code></li>
+<li>若已有部分服务，请根据需要选择执行</li>
+</ul>
+</li>
+<li>跳高句柄限制数后，需要退出登录并再次登入</li>
+</ul>
+<h3 id="安装文档&amp;命令">安装文档&amp;命令</h3>
+<p><a href="https://github.com/open-nodes/InstallStaff/blob/master/scripts/v0.9.2.1/ubuntu-14.04-LTS-bitcoind-0.9.2.1.sh" target="_blank" rel="external">https://github.com/open-nodes/InstallStaff/blob/master/scripts/v0.9.2.1/ubuntu-14.04-LTS-bitcoind-0.9.2.1.sh</a></p>
+<p>完成上述过程后，退出并重新登录。执行命令：<code>nohup supervise /root/supervise_bitcoind/ &amp;</code>，以启动bitcoind。</p>
+<p>首次同步若很慢，可能需要重启bitcoind，命令: <strong>kill `pgrep bitcoind`</strong></p>
+<h3 id="其他">其他</h3>
+<p>如果任何问题，请提出issue：<a href="https://github.com/open-nodes/InstallStaff/issues" target="_blank" rel="external">https://github.com/open-nodes/InstallStaff/issues</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.open-nodes.org/2014/06/15/init-nodes-v092/" data-id="jl076uejx1ivoq49" class="article-share-link">Share</a>
+      <a data-url="http://blog.open-nodes.org/2014/09/24/bitcoind-0921-ubuntu-1404-LTS/" data-id="28vq9araozytrpal" class="article-share-link">Share</a>
       
-        <a href="http://blog.open-nodes.org/2014/06/15/init-nodes-v092/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://blog.open-nodes.org/2014/09/24/bitcoind-0921-ubuntu-1404-LTS/#disqus_thread" class="article-comment-link">Comments</a>
       
       
     </footer>
@@ -253,19 +158,10 @@ chkconfig iptables <span class="command"><span class="keyword">on</span></span>
     
 <nav id="article-nav">
   
-    <a href="/2014/06/15/dev-bitcoin-seedermd/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Bitcoin-Seeder开发与部署
-        
-      </div>
-    </a>
   
-  
-    <a href="/2014/06/14/open-nodes-plan/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2014/06/15/dev-v092md/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">开放节点计划</div>
+      <div class="article-nav-title">基于bitcoind-v0.9.2开发工作</div>
     </a>
   
 </nav>
@@ -355,7 +251,7 @@ chkconfig iptables <span class="command"><span class="keyword">on</span></span>
 <script>
   var disqus_shortname = 'opennodes';
   
-  var disqus_url = 'http://blog.open-nodes.org/2014/06/15/init-nodes-v092/';
+  var disqus_url = 'http://blog.open-nodes.org/2014/09/24/bitcoind-0921-ubuntu-1404-LTS/';
   
   (function(){
     var dsq = document.createElement('script');

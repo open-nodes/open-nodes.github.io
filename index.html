@@ -67,6 +67,67 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-bitcoind-0921-ubuntu-1404-LTS" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/09/24/bitcoind-0921-ubuntu-1404-LTS/" class="article-date">
+  <time datetime="2014-09-24T03:20:08.000Z" itemprop="datePublished">Sep 24 2014</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/09/24/bitcoind-0921-ubuntu-1404-LTS/">超级节点部署文档-bitcoind-v0.9.2.1-ubuntu_14.04_LTS</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="软件需求">软件需求</h3>
+<ul>
+<li>OS: Ubuntu 14.04 LTS</li>
+<li>Bitcoind: v0.9.2.1</li>
+</ul>
+<h3 id="事前必读">事前必读</h3>
+<ul>
+<li><strong>bitcoin</strong>安装目录为: <code>/root/.bitcoin</code></li>
+<li>root身份执行本安装过程，若非root，请注意<code>sodo</code>切换</li>
+<li><code>supervise</code>模式运行bitcoind</li>
+<li>若是全新ubuntu 14.04 LTS，可以直接运行下面的安装shell<ul>
+<li><code>wget --no-check-certificate https://raw.githubusercontent.com/open-nodes/InstallStaff/master/scripts/v0.9.2.1/ubuntu-14.04-LTS-bitcoind-0.9.2.1.sh -O - | sh</code></li>
+<li>若已有部分服务，请根据需要选择执行</li>
+</ul>
+</li>
+<li>跳高句柄限制数后，需要退出登录并再次登入</li>
+</ul>
+<h3 id="安装文档&amp;命令">安装文档&amp;命令</h3>
+<p><a href="https://github.com/open-nodes/InstallStaff/blob/master/scripts/v0.9.2.1/ubuntu-14.04-LTS-bitcoind-0.9.2.1.sh" target="_blank" rel="external">https://github.com/open-nodes/InstallStaff/blob/master/scripts/v0.9.2.1/ubuntu-14.04-LTS-bitcoind-0.9.2.1.sh</a></p>
+<p>完成上述过程后，退出并重新登录。执行命令：<code>nohup supervise /root/supervise_bitcoind/ &amp;</code>，以启动bitcoind。</p>
+<p>首次同步若很慢，可能需要重启bitcoind，命令: <strong>kill `pgrep bitcoind`</strong></p>
+<h3 id="其他">其他</h3>
+<p>如果任何问题，请提出issue：<a href="https://github.com/open-nodes/InstallStaff/issues" target="_blank" rel="external">https://github.com/open-nodes/InstallStaff/issues</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.open-nodes.org/2014/09/24/bitcoind-0921-ubuntu-1404-LTS/" data-id="28vq9araozytrpal" class="article-share-link">Share</a>
+      
+        <a href="http://blog.open-nodes.org/2014/09/24/bitcoind-0921-ubuntu-1404-LTS/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-dev-v092md" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2014/06/15/dev-v092md/" class="article-date">
@@ -107,7 +168,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.open-nodes.org/2014/06/15/dev-v092md/" data-id="c18cjy0tt0ztakw9" class="article-share-link">Share</a>
+      <a data-url="http://blog.open-nodes.org/2014/06/15/dev-v092md/" data-id="pmcraloqv0lsvrx6" class="article-share-link">Share</a>
       
         <a href="http://blog.open-nodes.org/2014/06/15/dev-v092md/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -234,7 +295,7 @@ seeds<span class="preprocessor">.bitcoin</span><span class="preprocessor">.open<
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.open-nodes.org/2014/06/15/dev-bitcoin-seedermd/" data-id="cpp67aq7apo8180d" class="article-share-link">Share</a>
+      <a data-url="http://blog.open-nodes.org/2014/06/15/dev-bitcoin-seedermd/" data-id="ej3rn7ez9nruhtym" class="article-share-link">Share</a>
       
         <a href="http://blog.open-nodes.org/2014/06/15/dev-bitcoin-seedermd/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -330,7 +391,7 @@ chkconfig iptables <span class="command"><span class="keyword">on</span></span>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.open-nodes.org/2014/06/15/init-nodes-v092/" data-id="g998pydskyopjv8w" class="article-share-link">Share</a>
+      <a data-url="http://blog.open-nodes.org/2014/06/15/init-nodes-v092/" data-id="jl076uejx1ivoq49" class="article-share-link">Share</a>
       
         <a href="http://blog.open-nodes.org/2014/06/15/init-nodes-v092/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -440,7 +501,7 @@ donation.<span class="keyword">open</span>-nodes.org. <span class="number">564</
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.open-nodes.org/2014/06/14/open-nodes-plan/" data-id="4ab9jftjti95jp0p" class="article-share-link">Share</a>
+      <a data-url="http://blog.open-nodes.org/2014/06/14/open-nodes-plan/" data-id="8r3i2mmpiwy9nzgn" class="article-share-link">Share</a>
       
         <a href="http://blog.open-nodes.org/2014/06/14/open-nodes-plan/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -467,7 +528,7 @@ donation.<span class="keyword">open</span>-nodes.org. <span class="number">564</
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06">June 2014</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09">September 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06">June 2014</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -477,6 +538,10 @@ donation.<span class="keyword">open</span>-nodes.org. <span class="number">564</
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2014/09/24/bitcoind-0921-ubuntu-1404-LTS/">超级节点部署文档-bitcoind-v0.9.2.1-ubuntu_14.04_LTS</a>
+          </li>
         
           <li>
             <a href="/2014/06/15/dev-v092md/">基于bitcoind-v0.9.2开发工作</a>
