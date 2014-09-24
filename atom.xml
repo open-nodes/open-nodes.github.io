@@ -4,7 +4,7 @@
   <subtitle><![CDATA[open-nodes.org]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.open-nodes.org/"/>
-  <updated>2014-09-24T04:10:48.725Z</updated>
+  <updated>2014-09-24T04:13:18.010Z</updated>
   <id>http://blog.open-nodes.org/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://blog.open-nodes.org/2014/09/24/bitcoind-0921-ubuntu-1404-LTS/"/>
     <id>http://blog.open-nodes.org/2014/09/24/bitcoind-0921-ubuntu-1404-LTS/</id>
     <published>2014-09-24T03:20:08.000Z</published>
-    <updated>2014-09-24T04:10:29.000Z</updated>
+    <updated>2014-09-24T04:13:12.000Z</updated>
     <content type="html"><![CDATA[<h3 id="软件需求">软件需求</h3>
 <ul>
 <li>OS: Ubuntu 14.04 LTS</li>
@@ -43,6 +43,11 @@
 <p>首次同步若很慢，可能需要重启bitcoind，命令: <strong>kill `pgrep bitcoind`</strong></p>
 <h3 id="其他">其他</h3>
 <p>如果任何问题，请提出issue：<a href="https://github.com/open-nodes/InstallStaff/issues" target="_blank" rel="external">https://github.com/open-nodes/InstallStaff/issues</a></p>
+<p>欢迎Pull Request：</p>
+<ul>
+<li>其他操作的系统的安装文档</li>
+<li>安装过程的bug修复</li>
+</ul>
 ]]></content>
     
     
