@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2015 | 开放节点计划</title>
+  <title>Archives: 2015/3 | 开放节点计划</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description">
 <meta property="og:type" content="website">
 <meta property="og:title" content="开放节点计划">
-<meta property="og:url" content="http://blog.open-nodes.org/archives/2015/">
+<meta property="og:url" content="http://blog.open-nodes.org/archives/2015/03/">
 <meta property="og:site_name" content="开放节点计划">
 <meta property="og:description">
 <meta name="twitter:card" content="summary">
@@ -116,114 +116,6 @@
       <a data-url="http://blog.open-nodes.org/2015/03/01/choose-node-server/" data-id="4orlu4nswgb050sn" class="article-share-link">Share</a>
       
         <a href="http://blog.open-nodes.org/2015/03/01/choose-node-server/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-bitcoind-0.10.0-ubuntu-14.04-LTS" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/02/28/bitcoind-0.10.0-ubuntu-14.04-LTS/" class="article-date">
-  <time datetime="2015-02-28T09:00:08.000Z" itemprop="datePublished">Feb 28 2015</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/02/28/bitcoind-0.10.0-ubuntu-14.04-LTS/">超级节点部署文档-bitcoind-v0.10.0-ubuntu_14.04_LTS</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="软件需求">软件需求</h2>
-<ul>
-<li>OS: Ubuntu 14.04 LTS</li>
-<li>Bitcoind: v0.10.0</li>
-</ul>
-<h2 id="安装">安装</h2>
-<ul>
-<li><strong>bitcoin</strong>安装目录为: <code>/root/.bitcoin</code></li>
-<li>root身份执行本安装过程，若非root，请注意<code>sodo</code>切换</li>
-<li><code>supervise</code>模式运行bitcoind</li>
-</ul>
-<h3 id="安装文档&amp;命令">安装文档&amp;命令</h3>
-<p>具体安装细节均在shell文件中：<a href="https://raw.githubusercontent.com/open-nodes/InstallStaff/master/scripts/v0.10.0/ubuntu-14.04-LTS-bitcoind-0.10.0.sh" target="_blank" rel="external">ubuntu-14.04-LTS-bitcoind-0.10.0.sh</a></p>
-<ul>
-<li>启动命令：<code>nohup supervise /root/supervise_bitcoind/ &amp;</code></li>
-<li>停止命令：需要先终止<code>supervise</code>进程，再停止bitcoind: <code>bitcoin-cli stop</code></li>
-<li>终止命令: <strong>kill `pgrep bitcoind`</strong>，若进程卡死，则可强制退出: <strong>kill -9 `pgrep bitcoind`</strong></li>
-</ul>
-<h3 id="首次安装">首次安装</h3>
-<ul>
-<li>若是全新ubuntu 14.04 LTS，可以直接运行下面的安装shell<ul>
-<li><code>wget --no-check-certificate https://raw.githubusercontent.com/open-nodes/InstallStaff/master/scripts/v0.10.0/ubuntu-14.04-LTS-bitcoind-0.10.0.sh -O - | sh</code></li>
-</ul>
-</li>
-</ul>
-<p>也可按照脚本手动执行上述安装命令。执行上述脚本后，检测是否运行：<code>bitcoin-cli getinfo</code>。</p>
-<h3 id="升级安装">升级安装</h3>
-<p>若从旧版本升级至<code>v0.10.x</code>，仅需要重新编译bitcoind即可：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 下载v0.10.0源码</span></div><div class="line"><span class="built_in">cd</span> ~/</div><div class="line">mkdir -p <span class="built_in">source</span></div><div class="line">wget --no-check-certificate https://github.com/bitcoin/bitcoin/archive/v0.<span class="number">10.0</span>.tar.gz -O v0.<span class="number">10.0</span>.tar.gz</div><div class="line">tar zxf v0.<span class="number">10.0</span>.tar.gz</div><div class="line"><span class="built_in">cd</span> bitcoin-<span class="number">0.10</span>.<span class="number">0</span></div><div class="line"></div><div class="line"><span class="comment"># 打补丁，开启超级节点模式</span></div><div class="line">wget --no-check-certificate https://raw.githubusercontent.com/open-nodes/InstallStaff/master/scripts/v0.<span class="number">10.0</span>/open-nodes.org_hub-v0.<span class="number">10.0</span>.patch -O open-nodes.org_hub-v0.<span class="number">10.0</span>.patch</div><div class="line">patch -p1 &lt; open-nodes.org_hub-v0.<span class="number">10.0</span>.patch</div><div class="line"></div><div class="line"><span class="comment"># 编译</span></div><div class="line">./autogen.sh</div><div class="line">./configure --without-miniupnpc --disable-wallet</div><div class="line">make -j4</div><div class="line"></div><div class="line"><span class="comment"># 覆盖旧版bitcoind</span></div><div class="line">strip src/bitcoind</div><div class="line">cp src/bitcoind /usr/bin/bitcoind-<span class="number">0.10</span>.<span class="number">0</span></div><div class="line">cp src/bitcoin-cli /usr/bin/bitcoind-cli</div><div class="line">chmod <span class="number">755</span> /usr/bin/bitcoind-<span class="number">0.10</span>.<span class="number">0</span></div><div class="line"><span class="built_in">cd</span> /usr/bin</div><div class="line">ln <span class="operator">-s</span> ./bitcoind-<span class="number">0.10</span>.<span class="number">0</span> bitcoind</div><div class="line"><span class="built_in">cd</span> ~/</div></pre></td></tr></table></figure>
-
-<h4 id="升级注意事项">升级注意事项</h4>
-<ul>
-<li>rpcallowip不兼容更新，请注意替换。详情如下表格：</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>0.9.x and before</th>
-<th>0.10.x</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-rpcallowip=192.168.1.1</td>
-<td>-rpcallowip=192.168.1.1 (unchanged)</td>
-</tr>
-<tr>
-<td>-rpcallowip=192.168.1.*</td>
-<td>-rpcallowip=192.168.1.0/24</td>
-</tr>
-<tr>
-<td>-rpcallowip=192.168.*</td>
-<td>-rpcallowip=192.168.0.0/16</td>
-</tr>
-<tr>
-<td>-rpcallowip=* (dangerous!)</td>
-<td>-rpcallowip=::/0 (still dangerous!)</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>v0.10.x的区块数据与v0.9.x之前的将不再兼容，也就是说v0.10.0的数据文件无法用于老版本，一旦升级则无法降级至v0.9.x</li>
-</ul>
-<h3 id="其他">其他</h3>
-<p>如果任何问题，请提出issue：<a href="https://github.com/open-nodes/InstallStaff/issues" target="_blank" rel="external">https://github.com/open-nodes/InstallStaff/issues</a></p>
-<p>欢迎Pull Request：</p>
-<ul>
-<li>其他操作的系统的安装文档</li>
-<li>安装过程的bug修复</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.open-nodes.org/2015/02/28/bitcoind-0.10.0-ubuntu-14.04-LTS/" data-id="ciiybu6yoaxhxkb9" class="article-share-link">Share</a>
-      
-        <a href="http://blog.open-nodes.org/2015/02/28/bitcoind-0.10.0-ubuntu-14.04-LTS/#disqus_thread" class="article-comment-link">Comments</a>
       
       
     </footer>

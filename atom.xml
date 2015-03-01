@@ -4,7 +4,7 @@
   <subtitle><![CDATA[open-nodes.org]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.open-nodes.org/"/>
-  <updated>2015-02-28T10:26:38.306Z</updated>
+  <updated>2015-03-01T03:34:58.489Z</updated>
   <id>http://blog.open-nodes.org/</id>
   
   <author>
@@ -15,11 +15,40 @@
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[节点服务器的选型]]></title>
+    <link href="http://blog.open-nodes.org/2015/03/01/choose-node-server/"/>
+    <id>http://blog.open-nodes.org/2015/03/01/choose-node-server/</id>
+    <published>2015-03-01T02:59:36.000Z</published>
+    <updated>2015-03-01T03:34:05.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="选型">选型</h2>
+<p>下面数据是open-nodes的节点长期运行的经验结论，给出的是最低配要求，否则节点将无法长期稳定运行。</p>
+<ul>
+<li>1 ~ 200连接数：1核CPU，4G内存，5MBits带宽</li>
+<li>200 ~ 1000连接数：2核CPU，8G内存，10MBits带宽</li>
+</ul>
+<p>其对内存要求最高，比较耗费内存；带宽需质量优质，延迟小，ping值稳定；CPU占用一般，通常至强系列1~2核即足够。</p>
+<p>尝试4G内存运行500连接数的节点，测试结果是可以运行，但很难长期稳定。国内大多数IDC服务商都是机械磁盘，性能比SSD固态盘低一些。固态盘的机器内存不够时，数据打到swap分区上依然达到可以接收的性能，而机械盘服务器就不太行了，机械盘服务器的内存应该还要大一些。</p>
+<h2 id="实例数据">实例数据</h2>
+<p>下面是一台长时间稳定运行的比特币节点(托管服务商是Linode, Plan: 8GB)，当前连接数是<code>872</code>。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>bitcoin-cli getinfo</div><div class="line">{</div><div class="line">    <span class="string">"version"</span> <span class="symbol">:</span> <span class="number">90201</span>,</div><div class="line">    <span class="string">"protocolversion"</span> <span class="symbol">:</span> <span class="number">70002</span>,</div><div class="line">    <span class="string">"blocks"</span> <span class="symbol">:</span> <span class="number">345628</span>,</div><div class="line">    <span class="string">"timeoffset"</span> <span class="symbol">:</span> <span class="number">0</span>,</div><div class="line">    <span class="string">"connections"</span> <span class="symbol">:</span> <span class="number">872</span>,</div><div class="line">    <span class="string">"proxy"</span> <span class="symbol">:</span> <span class="string">""</span>,</div><div class="line">    <span class="string">"difficulty"</span> <span class="symbol">:</span> <span class="number">46684376316.86029053</span>,</div><div class="line">    <span class="string">"testnet"</span> <span class="symbol">:</span> <span class="keyword">false</span>,</div><div class="line">    <span class="string">"relayfee"</span> <span class="symbol">:</span> <span class="number">0</span>.<span class="number">00001000</span>,</div><div class="line">    <span class="string">"errors"</span> <span class="symbol">:</span> <span class="string">""</span></div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>内存占用<code>5.870g</code>，CPU负载<code>0.3</code>。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">top - <span class="number">02</span>:<span class="number">45</span>:<span class="number">12</span> <span class="preprocessor">up</span> <span class="number">64</span> days, <span class="number">22</span>:<span class="number">27</span>,  <span class="number">1</span> user,  load average: <span class="number">0.27</span>, <span class="number">0.29</span>, <span class="number">0.31</span></div><div class="line"><span class="label">Tasks:</span> <span class="number">107</span> total,   <span class="number">2</span> running, <span class="number">105</span> sleeping,   <span class="number">0</span> stopped,   <span class="number">0</span> zombie</div><div class="line">%<span class="built_in">Cpu</span>(s):  <span class="number">0.0</span> us,  <span class="number">1.6</span> sy,  <span class="number">4.4</span> ni, <span class="number">93.8</span> id,  <span class="number">0.0</span> wa,  <span class="number">0.0</span> hi,  <span class="number">0.1</span> <span class="literal">si</span>,  <span class="number">0.2</span> <span class="literal">st</span></div><div class="line">MiB Mem:  <span class="number">8018.238</span> total, <span class="number">7748.098</span> used,  <span class="number">270.141</span> free,   <span class="number">31.430</span> buffers</div><div class="line">MiB Swap: <span class="number">1023.996</span> total,  <span class="number">850.188</span> used,  <span class="number">173.809</span> free. <span class="number">1439.020</span> cached Mem</div><div class="line"></div><div class="line">  PID USER      PR  NI    VIRT    RES    <span class="keyword">SHR</span> S  %<span class="built_in">CPU</span> %MEM     TIME+ COMMAND</div><div class="line"> <span class="number">3254</span> root      <span class="number">25</span>   <span class="number">5</span> <span class="number">8451.</span>9m <span class="number">5.</span>870g  <span class="number">12.</span>8m S  <span class="number">34.9</span> <span class="number">75.0</span>  <span class="number">24632</span>:<span class="number">38</span> bitcoind</div></pre></td></tr></table></figure>
+
+
+<h2 id="近30天的系统负载图">近30天的系统负载图</h2>
+<p> <img src="https://cloud.githubusercontent.com/assets/514951/6429325/c16b3a52-c004-11e4-8350-ef0647d73e3d.png" alt="linode graphs last 30 days"></p>
+]]></content>
+    
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[超级节点部署文档-bitcoind-v0.10.0-ubuntu_14.04_LTS]]></title>
     <link href="http://blog.open-nodes.org/2015/02/28/bitcoind-0.10.0-ubuntu-14.04-LTS/"/>
     <id>http://blog.open-nodes.org/2015/02/28/bitcoind-0.10.0-ubuntu-14.04-LTS/</id>
     <published>2015-02-28T09:00:08.000Z</published>
-    <updated>2015-02-28T10:25:25.000Z</updated>
+    <updated>2015-02-28T10:47:50.000Z</updated>
     <content type="html"><![CDATA[<h2 id="软件需求">软件需求</h2>
 <ul>
 <li>OS: Ubuntu 14.04 LTS</li>
